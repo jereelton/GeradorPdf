@@ -168,6 +168,21 @@ public class TelaGeraPdf extends javax.swing.JFrame {
         String pdfConteudo = conteudoPdfJTextArea.getText();
         String pdfAutor    = "Jereelton";
         
+        if(pdfNome.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Faltou o nome para definir o arquivo");
+            return;
+        }
+        
+        if(pdfLocal.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Faltou o local para salvar o arquivo");
+            return;
+        }
+        
+        if(pdfConteudo.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Faltou o conteudo para criar o arquivo");
+            return;
+        }
+        
         GeraPdf arquivoPdf = new GeraPdf();
         arquivoPdf.definirLocalPdf(pdfLocal);
         arquivoPdf.definirNomePdf(pdfNome);
@@ -178,15 +193,14 @@ public class TelaGeraPdf extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(rootPane, "Arquivo "+pdfNome+" gerado com sucesso.\n"+pdfLocal+"\\"+pdfNome+".pdf");
             
+            nomePdfJTextField.setText("");
+            localPdfJTextField.setText("");
+            conteudoPdfJTextArea.setText("");
         }
         
     }//GEN-LAST:event_salvarPdfJButtonActionPerformed
 
     private void cancelarPdfJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarPdfJButtonActionPerformed
-        
-        nomePdfJTextField.setText("");
-        localPdfJTextField.setText("");
-        conteudoPdfJTextArea.setText("");
         
         System.exit(0);
         
